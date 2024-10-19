@@ -1,3 +1,3 @@
-const base_url = "http://localhost:8000";
+const base_url = "https://youtube-backend-vstf.onrender.com";
 
 export { base_url };
