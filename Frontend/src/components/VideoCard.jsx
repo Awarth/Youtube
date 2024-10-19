@@ -1,6 +1,4 @@
 import PropTypes from "prop-types";
-import avatar from "../assets/images/avatar.jpg";
-import sampleThumbnail from "../assets/images/thumbnail1.jpg";
 import { formatDuration } from "../utility/FormatDuration";
 import { Link } from "react-router-dom";
 import formatTimeAgo from "../utility/FormatTimeAgo";
@@ -18,7 +16,7 @@ function VideoCard({ details }) {
     >
       <div className="relative">
         <img
-          src={thumbnail || sampleThumbnail}
+          src={thumbnail}
           alt="thumbnail"
           className="w-full aspect-video rounded-t"
         />
@@ -28,7 +26,7 @@ function VideoCard({ details }) {
       </div>
       <div className="channelDetail border border-[#3d3d3d] bg-[#3d3d3d] rounded-b-md p-1 gap-2 flex justify-center items-center overflow-hidden">
         <img
-          src={owner.avatar || avatar}
+          src={owner.avatar}
           alt="avatar"
           className="aspect-square w-11 text-xs rounded-full"
         />

@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import api from "../utility/api";
 import Loader from "../components/Loader";
 import { useParams } from "react-router-dom";
-import avatarImage from "../assets/images/avatar.jpg";
-import cover from "../assets/images/thumbnail.jpg";
 
 function UserProfile() {
   const [channelDetails, setChannelDetails] = useState(null);
@@ -45,8 +43,8 @@ function UserProfile() {
   }
 
   const {
-    avatar = avatarImage,
-    coverImage = cover,
+    avatar = "",
+    coverImage = "",
     email = "",
     fullName = "",
     subscribersCount = "0",
