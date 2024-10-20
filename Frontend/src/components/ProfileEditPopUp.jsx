@@ -4,7 +4,6 @@ import { RxCross2 } from "react-icons/rx";
 import PropTypes from "prop-types";
 
 function ProfileEditPopUp({ onClose }) {
-
   const handleClosePopup = () => {
     onClose();
   };
@@ -19,7 +18,7 @@ function ProfileEditPopUp({ onClose }) {
       </span>
       <div className="relative w-full cursor-pointer">
         <Link
-          to="/profile/update-details" 
+          to="/profile/update-details"
           className="w-full py-2 px-4 flex items-center overflow-hidden border border-[#97C8EB] bg-transparent gap-1 rounded transition-all duration-300 ease-in-out hover:scale-105 before:rounded before:absolute before:top-0 before:right-full before:w-0 before:h-full before:transition-all before:bg-gradient-to-r before:bg-[#3AAFB9] before:duration-300 before:ease-in-out before:z-[-1] hover:before:right-0 hover:before:w-full text-white"
         >
           <FiEdit2 />

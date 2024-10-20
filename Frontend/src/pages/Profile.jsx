@@ -100,7 +100,7 @@ function Profile() {
       </div>
 
       {settingOpen && (
-        <div className="fixed inset-0 bg-[#00000020] bg-opacity-50 backdrop-blur flex justify-center items-center z-20">
+        <div className="fixed inset-0 bg-[#00000020] bg-opacity-50 backdrop-blur flex justify-center items-center z-40">
           <ProfileEditPopUp onClose={handleEditPopup} />
         </div>
       )}

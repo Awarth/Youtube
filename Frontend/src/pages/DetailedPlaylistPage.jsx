@@ -84,8 +84,8 @@ function DetailedPlaylistPage() {
 
   if (!playlistDetails) {
     return (
-      <div className="w-full h-full flex flex-col">
-        <Loader />;
+      <div className="w-full h-full flex justify-center items-center flex-col">
+        <Loader />
       </div>
     );
   }
