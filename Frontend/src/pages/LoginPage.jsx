@@ -64,7 +64,7 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-screen">
+    <div className="flex flex-col justify-center items-center w-full h-screen gap-3">
       <div className="max-w-[26rem] w-full border border-[#97C8EB] rounded-xl flex flex-col p-8 bg-[#001011] text-[#97C8EB]">
         <h2 className="text-4xl text-center mb-4">Login</h2>
         <form onSubmit={handleLogin} className="flex flex-col w-full text-lg">
@@ -91,7 +91,10 @@ function Login() {
               className=" w-full bg-transparent px-2 py-1 outline-none font-light"
               required
             />
-            <p onClick={() => setText(!text)} className="text-3xl px-2 cursor-pointer">
+            <p
+              onClick={() => setText(!text)}
+              className="text-3xl px-2 cursor-pointer"
+            >
               {text ? <PiEyeSlash /> : <PiEyeLight />}
             </p>
           </div>
@@ -114,6 +117,11 @@ function Login() {
             </button>
           </div>
         </form>
+      </div>
+      <div className="max-w-[26rem] w- border border-[#97C8EB] py-1 px-2 text-[#97C8EB] rounded-md">
+        <h2>Demo Login</h2>
+        <p>username : adarsh</p>
+        <p>password : Adarsh@123</p>
       </div>
     </div>
   );
