@@ -63,6 +63,38 @@ function Login() {
     }));
   };
 
+  const handleDemoLogin = () => {
+    setError("");
+    const sendDemoLoginRequest = async () => {
+      try {
+        const response = await api.post(`/users/login`, {
+          username: "adarsh",
+          password: "Adarsh@123",
+        });
+
+        if (response.status === 200) {
+          setError("");
+          dispatch(
+            loginSuccess({
+              accessToken: response.data.data.accessToken,
+              user: response.data.data.user,
+            })
+          );
+          navigate("/");
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          setError("Invalid username or password. Please try again.");
+        } else {
+          setError("An error occurred. Please try again later.");
+        }
+        console.error("Error during login:", error);
+      }
+    };
+
+    sendDemoLoginRequest();
+  };
+
   return (
     <div className="flex flex-col justify-center items-center w-full h-screen gap-3">
       <div className="max-w-[26rem] w-full border border-[#97C8EB] rounded-xl flex flex-col p-8 bg-[#001011] text-[#97C8EB]">
@@ -117,11 +149,12 @@ function Login() {
             </button>
           </div>
         </form>
-      </div>
-      <div className="max-w-[26rem] w- border border-[#97C8EB] py-1 px-2 text-[#97C8EB] rounded-md">
-        <h2>Demo Login</h2>
-        <p>username : adarsh</p>
-        <p>password : Adarsh@123</p>
+        <button
+          onClick={handleDemoLogin}
+          className="w-full mt-3 py-2 px-4 flex justify-center items-center overflow-hidden border border-[#97C8EB] bg-transparent gap-1 rounded transition-all duration-300 ease-in-out hover:scale-105 before:rounded before:absolute before:top-0 before:right-full before:w-0 before:h-full before:transition-all before:bg-gradient-to-r before:bg-[#3AAFB9] before:duration-300 before:ease-in-out before:z-[-1] hover:before:right-0 hover:before:w-full "
+        >
+          Demo Login
+        </button>
       </div>
     </div>
   );
