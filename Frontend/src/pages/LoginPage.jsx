@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { loginSuccess } from "../redux/slices/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../utility/api";
+import Loader from "../components/Loader";
 
 function Login() {
   const dispatch = useDispatch();
@@ -15,16 +16,17 @@ function Login() {
     username: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
     setError(""); // Reset error before the login attempt
+    setLoading(true);
 
     const sendLoginRequest = async () => {
       try {
         const response = await api.post(`/users/login`, details);
-
         if (response.status === 200) {
           setError(""); // Clear any existing errors
           dispatch(
@@ -42,6 +44,7 @@ function Login() {
           });
         }
       } catch (error) {
+        setLoading(false);
         // Set error message based on the type of error
         if (error.response && error.response.status === 401) {
           setError("Invalid username or password. Please try again.");
@@ -65,6 +68,7 @@ function Login() {
 
   const handleDemoLogin = () => {
     setError("");
+    setLoading(true);
     const sendDemoLoginRequest = async () => {
       try {
         const response = await api.post(`/users/login`, {
@@ -96,7 +100,12 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-screen gap-3">
+    <div className="relative flex flex-col justify-center items-center w-full h-screen gap-3">
+      {loading && (
+        <div className="absolute w-full h-screen flex items-center justify-center inset-0 bg-[#0000006f] bg-opacity-50 backdrop-blur-lg z-10">
+          <Loader />
+        </div>
+      )}
       <div className="max-w-[26rem] w-full border border-[#97C8EB] rounded-xl flex flex-col p-8 bg-[#001011] text-[#97C8EB]">
         <h2 className="text-4xl text-center mb-4">Login</h2>
         <form onSubmit={handleLogin} className="flex flex-col w-full text-lg">
